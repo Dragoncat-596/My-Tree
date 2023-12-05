@@ -41,8 +41,13 @@ function canGenPoints(){
 function getPointGen() {
 	if(!canGenPoints())
 		return new Decimal(0)
-
+		
 	let gain = new Decimal(1)
+	if (hasUpgrade('Q', 11)) gain = gain.times(2)
+	if (hasUpgrade('Q', 12)) gain = gain.times(upgradeEffect('Q', 12))
+	if (hasUpgrade('Q', 21)) gain = gain.times(upgradeEffect('Q', 21))
+	if (hasUpgrade('Q', 22)) gain = gain.times(2)
+	if (hasUpgrade('Q', 23)) layers['Neu'].showLayer()
 	return gain
 }
 
